@@ -8,7 +8,7 @@
 body {
     background-color: #222222;
     /* Fondo oscuro para los bordes */
-    height: 100vh;
+    height: 100dvh;
     margin: 0;
     overflow: hidden;
     display: flex;
@@ -18,7 +18,7 @@ body {
 
 #app-wrapper {
     width: 100%;
-    height: 100vh;
+    height: 100dvh;
     background-color: #d8d8d8;
     display: flex;
     flex-direction: column;
