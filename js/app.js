@@ -334,9 +334,26 @@ function resetAll() {
     goToStep('step-welcome');
 }
 
-// ===== RESIZE & SCALE REMOVED FOR RESPONSIVE DESIGN =====
+// ===== RESIZE & SCALE =====
+function scaleApp() {
+    const wrapper = document.getElementById('app-wrapper');
+    if (!wrapper) return;
+    
+    // Obtenemos el tamaño real de la ventana interior
+    const safeWidth = window.innerWidth;
+    const safeHeight = window.innerHeight;
+    
+    const scaleX = safeWidth / 1024;
+    const scaleY = safeHeight / 768;
+    const scale = Math.min(scaleX, scaleY);
+    
+    wrapper.style.transform = `translate(-50%, -50%) scale(${scale})`;
+}
 
 // Init
 document.addEventListener('DOMContentLoaded', () => {
+    scaleApp();
+    window.addEventListener('resize', scaleApp);
+    
     goToStep('step-welcome');
 });
