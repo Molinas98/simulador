@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Simulador Oficial TSJE</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app-wrapper">
+        <header class="app-header">
+            <div class="header-left">
+                <div class="logo-box">
+                    <img src="img/logos/logo_eleccion.png" alt="Elecciones" class="logo">
+                </div>
+            </div>
+            <div class="header-center">
+                <div class="header-info">
+                    Elección: &nbsp;<b>ELECCIONES MUNICIPALES</b>&nbsp; Departamento: &nbsp;<b>5-CAAGUAZU</b>&nbsp;
+                    Distrito: &nbsp;<b>0-CORONEL OVIEDO</b>&nbsp;
+                    Zona:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Local:
+                </div>
+                <div class="category-title-bar" id="global-category-bar" style="visibility: hidden;">
+                    <h1 id="global-category-text"></h1>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="logo-box">
+                    <img src="img/logos/logo_votar.png" alt="TSJE" class="logo">
+                </div>
+            </div>
+        </header>
+
+        <main id="app-content">
+            <!-- STEP 0 -->
+            <section id="step-welcome" class="step active">
+                <div class="welcome-container">
+                    <div style="position: relative; width: 400px; height: 300px; margin-bottom: 20px;">
+                        <img src="img/maquina2.png" alt="Máquina" class="maquina-img"
+                            style="position: absolute; bottom: 0; left: 0; width: 100%;"
+                            onerror="this.style.display='none'">
+                        <img src="img/insert_boleta.gif" alt="Boletin"
+                            style="position: absolute; top: -50px; right: 50px; width: 150px;"
+                            onerror="this.style.display='none'">
+                    </div>
+                    <h2>Colocá el <b>boletín</b> en la ranura como lo indica la flecha.</h2>
+                    <button class="btn-continuar" onclick="startVoting()">Continuar</button>
+                </div>
+            </section>
+
+            <!-- STEP 1 & 2 -->
+            <section id="voting-screen" class="step">
+                <div class="candidates-grid" id="candidates-container"></div>
+            </section>
+
+            <!-- STEP 2 PREF -->
+            <section id="preference-screen" class="step">
+                <div class="preference-list-header" id="pref-list-header"></div>
+                <div class="preferences-grid" id="preference-candidates"></div>
+            </section>
+
+            <!-- STEP 3 CONFIRM -->
+            <section id="confirmation-screen" class="step">
+                <div class="confirmation-layout">
+                    <div class="confirmation-cards" id="confirmation-cards"></div>
+                    <div class="confirmation-actions">
+                        <button class="btn-action btn-orange" onclick="restartVoting()">
+                            <i class="material-icons action-icon">refresh</i>
+                            <div>Reiniciar<br>Seleccion</div>
+                        </button>
+                        <button class="btn-action btn-green" onclick="confirmVote()">
+                            <i class="material-icons action-icon">print</i>
+                            <div>Imprimir<br>Seleccion</div>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STEP 4 THANKS -->
+            <section id="thank-you-screen" class="step">
+                <div class="welcome-container">
+                    <div style="font-size: 5rem; color: #2ecc71;">✓</div>
+                    <h2 style="font-size: 3rem; font-weight: bold; margin: 20px 0;">Muchas Gracias</h2>
+                    <p style="font-size: 1.5rem;">Su boletín ha sido impreso</p>
+                    <p style="font-size: 1.2rem; color: #666;">Puede retirar su boletín y depositarlo en la urna</p>
+                    <button class="btn-continuar" onclick="resetAll()" style="margin-top: 30px;">Volver al Inicio</button>
+                </div>
+            </section>
+        </main>
+
+        <footer class="app-header app-footer-custom" id="app-footer" style="display: none;">
+            <div class="footer-left-content">
+                <div class="footer-btn" id="btn-contrast">
+                    <i class="material-icons boton-accion">invert_colors</i>
+                    <div class="footer-btn-text">Vista alto<br>contraste</div>
+                </div>
+                <div class="footer-divider"></div>
+                
+                <div class="footer-btn" id="btn-back" onclick="goBack()" style="display: none;">
+                    <i class="material-icons boton-accion">arrow_back</i>
+                    <div class="footer-btn-text">Volver<br>Atrás</div>
+                </div>
+                <div class="footer-divider" id="divider-back" style="display: none;"></div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Rotate Message Overlay Removed -->
+
+    <!-- Password Overlay Removed -->
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,572 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #222222;
+    /* Fondo oscuro para los bordes */
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#app-wrapper {
+    width: 100%;
+    height: 100vh;
+    background-color: #d8d8d8;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Header */
+.app-header {
+    background: #5a5a5a;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 2px solid #333;
+    color: white;
+    font-family: Arial, sans-serif;
+    min-height: 80px;
+}
+
+.logo-box {
+    background: white;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 10px;
+    margin: 0 5px;
+}
+
+.logo {
+    height: 55px;
+    max-width: 160px;
+    object-fit: contain;
+}
+
+.header-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.header-info {
+    text-align: center;
+    font-size: 0.85rem;
+    padding: 5px 0;
+    color: #f0f0f0;
+}
+
+/* Main layout */
+#app-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #e0e0e0;
+}
+
+/* Steps */
+.step {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+}
+
+.step.active {
+    display: flex;
+}
+
+/* Welcome */
+.welcome-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.maquina-img {
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.welcome-container h2 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin-bottom: 30px;
+}
+
+.btn-continuar {
+    background: #E20613;
+    color: white;
+    border: none;
+    padding: 15px 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* Category Title */
+.category-title-bar {
+    background: #000000;
+    color: white;
+    text-align: center;
+    padding: 6px 12px;
+    width: 100%;
+    margin-top: auto;
+}
+
+.category-title-bar h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Grid containers */
+.candidates-grid,
+.preferences-grid {
+    flex: 1;
+    display: grid;
+    grid-auto-rows: minmax(0, 1fr);
+    gap: 4px;
+    padding: 4px;
+    min-height: 0;
+}
+
+.candidates-grid {
+    background: #ffffff;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.candidate-card-int {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.card-int-party {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.card-int-middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex: 1;
+}
+
+.card-int-photo {
+    width: 140px;
+    height: 140px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: #333;
+}
+
+.card-int-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.card-int-lista {
+    font-size: 1.8rem;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.card-int-name {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-top: 10px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.list-card-jun {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.list-card-jun .l-title {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.list-card-jun .l-party {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.list-card-jun .l-abbr {
+    font-size: 1.5rem;
+}
+
+/* Blank Vote Card */
+.blank-card {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #ccc;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.blank-card .blank-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+/* Preference Header & Grid */
+.preference-list-header {
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 15px;
+}
+
+.preferences-grid {
+    background: #e0e0e0;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.pref-card {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+
+.pref-card-top {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.pref-photo {
+    width: 70px;
+    height: 70px;
+    background: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: #333;
+}
+
+.pref-option {
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.pref-name {
+    font-size: 1.1rem;
+    text-align: center;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+/* Confirmation Screen */
+.confirmation-layout {
+    display: flex;
+    flex: 1;
+    padding: 4px;
+    gap: 4px;
+    background: #e0e0e0;
+    overflow: hidden;
+}
+
+.confirmation-cards {
+    flex: 1;
+    display: flex;
+    gap: 4px;
+}
+
+.confirm-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.confirm-cat {
+    font-size: 1.8rem;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.confirm-party {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.confirm-lista {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.confirm-photo {
+    width: 150px;
+    height: 150px;
+    background: white;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    color: #333;
+}
+
+.confirm-name {
+    font-size: 2rem;
+    font-weight: bold;
+    min-height: 80px;
+}
+
+.confirm-option {
+    font-size: 1.8rem;
+    margin-top: 5px;
+}
+
+.btn-modificar {
+    background: #a0a0a0;
+    color: black;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.confirmation-actions {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.btn-action {
+    flex: 1;
+    border: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-orange {
+    background: #ff8c00;
+}
+
+.btn-green {
+    background: #00a000;
+}
+
+.action-icon {
+    font-size: 5rem !important;
+    margin-bottom: 10px;
+}
+
+/* Footer */
+.app-footer-custom {
+    background: #c2c2c2;
+    background: linear-gradient(to bottom, #d9d9d9, #b5b5b5);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    border-top: 2px solid #888;
+    color: #333;
+}
+
+.footer-left-content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.footer-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.95rem;
+    height: 100%;
+}
+
+.footer-btn-text {
+    line-height: 1.2;
+    padding-left: 8px;
+}
+
+.boton-accion {
+    background: #555;
+    color: white;
+    width: 42px;
+    height: 42px;
+    border-radius: 4px;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px !important;
+}
+
+.footer-divider {
+    width: 1px;
+    height: 70%;
+    background: #aaa;
+    margin: 0;
+}
+
+/* Removed rotate message styles */
+@media screen and (max-width: 768px) {
+    .candidates-grid {
+        grid-template-columns: 1fr;
+    }
+    .preferences-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .confirmation-layout {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+    .confirmation-cards {
+        flex-direction: column;
+    }
+    .confirmation-actions {
+        width: 100%;
+        flex-direction: row;
+        min-height: 100px;
+    }
+    .btn-action {
+        font-size: 1.2rem;
+    }
+    .action-icon {
+        font-size: 3rem !important;
+    }
+    .card-int-party {
+        font-size: 1.2rem;
+    }
+    .card-int-lista {
+        font-size: 1.2rem;
+    }
+    .card-int-photo {
+        width: 100px;
+        height: 100px;
+        font-size: 2rem;
+    }
+    .card-int-name {
+        font-size: 1.2rem;
+    }
+    .list-card-jun .l-title {
+        font-size: 2.5rem;
+    }
+    .list-card-jun .l-party {
+        font-size: 1.5rem;
+    }
+    .logo {
+        height: 35px;
+        max-width: 90px;
+    }
+    .header-info {
+        font-size: 0.65rem;
+    }
+    .welcome-container h2 {
+        font-size: 1.5rem;
+        text-align: center;
+        padding: 0 10px;
+    }
+    .maquina-img {
+        max-width: 300px;
+    }
+}
+
+/* Password Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.overlay.active {
+    display: flex;
+}
+
+.overlay-content.card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
